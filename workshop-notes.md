@@ -4,7 +4,7 @@
 2.  Navigate to the directory where you want to clone the project.
 3.  Run the following command:
     ```bash
-    git clone [YOUR_PROJECT_REPOSITORY_URL_HERE]
+    git clone https://github.com/itay-ye/Cline.git
     ```
 4.  Once cloned, you can open the `Cline` folder in VS Code.
 
