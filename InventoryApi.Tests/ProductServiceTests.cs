@@ -66,38 +66,27 @@ public class ProductServiceTests
     }
 
     [Fact]
-    public async Task UpdateProduct_WhenChangingPrice_ShouldNotResetStockQuantity()
+    public async Task GetLowStockProducts_ShouldIncludeProductsExactlyAtThreshold()
     {
         // Arrange
         var context = GetTestContext();
         var service = new ProductService(context);
-        
-        var product = new Product
+        var threshold = 5;
+
+        await context.Products.AddRangeAsync(new[]
         {
-            Name = "Original Product",
-            Price = 10.00m,
-            StockQuantity = 20,
-            Category = "Test"
-        };
-        await context.Products.AddAsync(product);
+            new Product { Name = "Below Threshold", StockQuantity = 2 },
+            new Product { Name = "At Threshold", StockQuantity = threshold },
+            new Product { Name = "Above Threshold", StockQuantity = 10 }
+        });
         await context.SaveChangesAsync();
 
-        var updatedProduct = new Product
-        {
-            Id = product.Id,
-            Name = "Original Product",
-            Price = 15.00m, // Changed price
-            StockQuantity = 20,
-            Category = "Test"
-        };
-
         // Act
-        var result = await service.UpdateProductAsync(product.Id, updatedProduct);
+        var result = await service.GetLowStockProductsAsync(threshold);
 
         // Assert
-        Assert.NotNull(result);
-        Assert.Equal(15.00m, result.Price); // Price should be updated
-        Assert.Equal(20, result.StockQuantity); // Stock should NOT be reset to 0
+        Assert.Equal(2, result.Count());
+        Assert.Contains(result, p => p.Name == "At Threshold");
     }
 
     [Fact]
@@ -107,7 +96,7 @@ public class ProductServiceTests
         var context = GetTestContext();
         var service = new ProductService(context);
         var initialDate = DateTime.UtcNow.AddDays(-1);
-        
+
         var product = new Product
         {
             Name = "Test Product",

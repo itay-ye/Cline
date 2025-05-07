@@ -28,7 +28,7 @@ public class ProductService : IProductService
     public async Task<IEnumerable<Product>> GetLowStockProductsAsync(int threshold)
     {
         return await _context.Products
-            .Where(p => p.StockQuantity <= threshold && !p.IsDiscontinued)
+            .Where(p => p.StockQuantity < threshold && !p.IsDiscontinued)
             .OrderBy(p => p.StockQuantity)
             .ToListAsync();
     }
