@@ -68,9 +68,9 @@ First things first, let's make sure your VS Code is decked out with the best too
 
     You'll chat with me in a dedicated Cline panel. You give me tasks, and I use my "tools" (like reading files or running commands) to get things done. We'll see this in action very soon!
 
-### Step 2: Let's Try to Run This Thing (and maybe break it a little 😉)
+### Step 2: Let's Build This Thing First! 🛠️
 
-Every good developer knows the first step is to see if the project even runs!
+Every good developer knows the first step is to make sure the project builds correctly!
 
 1.  **Open a Terminal:** In VS Code, you can open a new terminal by going to "Terminal" > "New Terminal" in the top menu.
 2.  **Navigate to the API Project:** In the terminal, type:
@@ -78,9 +78,9 @@ Every good developer knows the first step is to see if the project even runs!
     cd InventoryApi
     ```
     This takes you into the main project folder.
-3.  **Try to Run It:** Now, let's try to start the API. Type:
+3.  **Build the Project:** Let's try to build the API first. Type:
     ```bash
-    dotnet run
+    dotnet build
     ```
     Uh oh! You'll probably see some scary red error messages. Don't worry, this is on purpose!
 
@@ -88,7 +88,7 @@ Every good developer knows the first step is to see if the project even runs!
     Now, let's get Cline to figure this out. In the Cline chat, you can send a message like this:
 
     ```
-    The project isn't running. Can you look at the terminal output and help me fix it?
+    The project isn't building. Can you look at the build output and help me fix it?
     Here's the error:
     [Paste the error message from your terminal here]
     ```
