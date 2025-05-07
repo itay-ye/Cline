@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch InventoryApi",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/InventoryApi/bin/Debug/net9.0/InventoryApi.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/InventoryApi",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Launch Tests",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/InventoryApi.Tests/bin/Debug/net9.0/InventoryApi.Tests.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/InventoryApi.Tests",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        }
+    ]
+}

@@ -1,7 +1,3 @@
-## Visual Studio Code
-.vscode/
-*.code-workspace
-
 ## Visual Studio
 .vs/
 *.suo
